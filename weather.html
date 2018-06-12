@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title> Weather </title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   </head>
-   <body>
-      <h1>
-         <div id="temp"></div>
-         <div id="minutely"></div>
-      </h1>
-      <h2>
-         <div id="location"></div>
-      </h2>
-   </body>
-   <style>
+	<head>
+		<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+				<title> Weather </title>
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+			</head>
+			<body>
+				<h1 style="color:red;">Weather forecast at your Location</h1>
+				<h2>
+					<div id="loc"></div>
+					<div id="temp"></div>
+					<div id="minutely"></div>
+					<div id="pre"></div>
+				</h2>
+				<h1 style="color:red;">The Geomentric coordinates are
+				</h2>
+				<h2>
+					<div id="location"></div>
+				</h2>
+			</body>
+			<style>
       html{
       font-family: "Avenir Next", Helevetica, sans-serif;
       text-align: center;
@@ -27,7 +32,7 @@
       font-weight: 300;
       }
    </style>
-   <script>
+			<script>
       function weather() {
       
       var location = document.getElementById("location");
@@ -38,12 +43,15 @@
        latitude = position.coords.latitude;
        longitude = position.coords.longitude;
       
-       location.innerHTML = 'Latitude is ' + latitude + '° <br> Longitude is ' + longitude + '°';
+       location.innerHTML = 'Latitude is ' + latitude + '° 
+				<br> Longitude is ' + longitude + '°';
       
-        $.getJSON("http:api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&units=metric&appid="+apiKey, function(data) {
+        var data=$.getJSON("http:api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&units=metric&appid="+apiKey, function(data) {
          //document.write(JSON.stringify(data));
-      $('#temp').html(data.main.temp + '° C');
-         $('#minutely').html((data.main.temp*1.8)+32 + '° F');
+      $('#temp').html("Current temperature in celsius is "+data.main.temp + '° C');
+         $('#minutely').html("Current temperature in Fahrenheit is "+(data.main.temp*1.8)+32 + '° F');
+		 $('#loc').html("you are in "+data.name);
+		 $('#pre').html("pressure is "+data.main.pressure+" millibars");
        });
       }
       
@@ -55,5 +63,6 @@
       }
       
       weather();
-   </script>
-</html>
+   
+				</script>
+			</html>
