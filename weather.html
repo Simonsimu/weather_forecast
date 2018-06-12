@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1">
-				<title> Weather </title>
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-			</head>
-			<body>
-				<h1 style="color:red;">Weather forecast at your Location</h1>
-				<h2>
-					<div id="loc"></div>
-					<div id="temp"></div>
-					<div id="minutely"></div>
-					<div id="pre"></div>
-				</h2>
-				<h1 style="color:red;">The Geomentric coordinates are
-				</h2>
-				<h2>
-					<div id="location"></div>
-				</h2>
-			</body>
-			<style>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title> Weather </title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   </head>
+   <body>
+		<h1 style="color:red;">Weather forecast at your Location</h1>
+      <h2>
+	  <div id="loc"></div>
+         <div id="temp"></div>
+         <div id="minutely"></div>
+		 
+         <div id="pre"></div>
+      </h2>
+	  <h1 style="color:red;">The Geomentric coordinates are</h2>
+      <h2>
+         <div id="location"></div>
+      </h2>
+   </body>
+   <style>
       html{
       font-family: "Avenir Next", Helevetica, sans-serif;
       text-align: center;
@@ -32,7 +32,7 @@
       font-weight: 300;
       }
    </style>
-			<script>
+   <script>
       function weather() {
       
       var location = document.getElementById("location");
@@ -43,8 +43,7 @@
        latitude = position.coords.latitude;
        longitude = position.coords.longitude;
       
-       location.innerHTML = 'Latitude is ' + latitude + '° 
-				<br> Longitude is ' + longitude + '°';
+       location.innerHTML = 'Latitude is ' + latitude + '° <br> Longitude is ' + longitude + '°';
       
         var data=$.getJSON("http:api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&units=metric&appid="+apiKey, function(data) {
          //document.write(JSON.stringify(data));
@@ -63,6 +62,5 @@
       }
       
       weather();
-   
-				</script>
-			</html>
+   </script>
+</html>
